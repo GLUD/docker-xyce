@@ -7,9 +7,9 @@ services:
   - docker
 
 before_install:
-- docker build -t xyce-parallel-test -f Dockerfile.parallel.test .
+- docker build -t xyce-parallel-test -f Dockerfile-test.parallel .
 
 script:
 #- docker ps | grep -q 
-- docker run xyce-parallel-test ./xyce-test.sh 
+- docker run xyce-parallel-test sh -c "./xyce-build/xyce-tests.sh" 
 

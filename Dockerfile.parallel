@@ -33,7 +33,7 @@ tar xz && mv Trilinos-trilinos-release-${TRILINOS_VERSION//./-} trilinos-source 
 ENV XYCE_VERSION=6.7
 COPY ./xyce-reconfigure-parallel.sh ./xyce-build/xyce-reconfigure.sh
 RUN curl https://xyce.sandia.gov/downloads/_assets/documents/Xyce-${XYCE_VERSION}.tar.gz | tar xz && mv Xyce-${XYCE_VERSION} Xyce && cd xyce-build && \
-./xyce-reconfigure.sh && make && make install
+./xyce-reconfigure.sh && make && make install && cd ../ && rm -rf Xyce/
 
 
 

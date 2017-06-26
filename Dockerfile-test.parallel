@@ -1,12 +1,12 @@
 FROM glud/xyce:parallel
 
-RUN yum install perl numpy scipy && rm -rf /var/cache
+RUN yum install -y perl numpy scipy && rm -r /var/cache/yum/x86_64/7/*
 
 ENV XYCOS_SRCDIR=/opt/Xyce/
 ENV XYCOS_OUTDIR=/usr/local/
 WORKDIR $XYCOS_SRCDIR
 
-COPY ./xyce-tests-parallel.sh ./xyce-tests.sh
+COPY ./xyce-tests-parallel.sh ./xyce-build/xyce-tests.sh
 
 ENV XYCE_VERSION=6.7
 RUN curl https://xyce.sandia.gov/downloads/_assets/documents/Xyce_Regression-${XYCE_VERSION}.tar.gz | tar xz && mv Xyce_Regression-${XYCE_VERSION} Xyce_Regression
