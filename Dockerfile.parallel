@@ -37,3 +37,5 @@ COPY ./xyce-reconfigure-parallel.sh ./xyce-build/xyce-reconfigure.sh
 RUN curl https://xyce.sandia.gov/downloads/_assets/documents/Xyce-${XYCE_VERSION}.tar.gz | tar xz && mv Xyce-${XYCE_VERSION} Xyce && cd xyce-build && \
 ./xyce-reconfigure.sh && make && make install && cd ../ && rm -rf Xyce/
 
+RUN groupadd -r xyce && useradd --no-log-init -d $XYCE_SRCDIR -r -g xyce xyce && chown -R xyce:xyce $SCR_DIR
+USER xyce

@@ -1,6 +1,6 @@
 FROM glud/xyce:parallel
 
-RUN yum install -y perl numpy scipy && rm -r /var/cache/yum/x86_64/7/*
+RUN yum install -y perl numpy scipy
 
 ENV XYCE_SRCDIR=/opt/Xyce/
 ENV XYCE_OUTDIR=/usr/local/
