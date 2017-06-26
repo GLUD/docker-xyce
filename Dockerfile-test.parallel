@@ -2,9 +2,9 @@ FROM glud/xyce:parallel
 
 RUN yum install -y perl numpy scipy && rm -r /var/cache/yum/x86_64/7/*
 
-ENV XYCOS_SRCDIR=/opt/Xyce/
-ENV XYCOS_OUTDIR=/usr/local/
-WORKDIR $XYCOS_SRCDIR
+ENV XYCE_SRCDIR=/opt/Xyce/
+ENV XYCE_OUTDIR=/usr/local/
+WORKDIR $XYCE_SRCDIR
 
 COPY ./xyce-tests-parallel.sh ./xyce-build/xyce-tests.sh
 
