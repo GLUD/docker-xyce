@@ -11,5 +11,8 @@ before_install:
 
 script:
 #- docker ps | grep -q 
-- docker run xyce-parallel-test sh -c "./xyce-build/xyce-tests.sh" 
+- docker run -v /Xyce_Test:/opt/Xyce/Xyce_Test xyce-parallel-test sh -c "cd ./xyce-build/; ./xyce-tests.sh"
+- $(if grep -i failed /Xyce_Test/test_results 1>&2; then exit -1; else exit 0; fi)
+ 
+
 

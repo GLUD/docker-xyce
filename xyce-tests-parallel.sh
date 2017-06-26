@@ -1,7 +1,7 @@
 #!/bin/bash
 
 $XYCE_SRCDIR/Xyce_Regression/TestScripts/run_xyce_regression \
---output=`pwd`/Xyce_Test --xyce_test="$XYCE_SRCDIR/Xyce_Regression" \
+--output=$XYCE_SRCDIR/Xyce_Test --xyce_test="$XYCE_SRCDIR/Xyce_Regression" \
 --taglist="+parallel+nightly?noverbose-klu-verbose?fft" \
---resultfile=`pwd`/parallel_results \
-"mpirun -np 2 `pwd`/src/Xyce" 
+--resultfile=$XYCE_SRCDIR/parallel_results \
+"mpirun -np 2 --allow-run-as-root `pwd`/src/Xyce" 
