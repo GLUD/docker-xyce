@@ -6,12 +6,6 @@ RUN yum install -y make automake cmake gcc gcc-c++ gcc-gfortran blas-devel cmake
 
 ## Paralel version
 
-# Workaround with [https://bugzilla.redhat.com/show_bug.cgi?id=1408316] bug in Centos 7.3 (1611): //TODO: remove in Centos 7.4 docker images update
-RUN yum install -y rpm-build libibverbs-devel libnl3-devel librdmacm-devel infinipath-psm-devel libpsm2-devel
-RUN curl -O https://kojipkgs.fedoraproject.org//packages/libfabric/1.4.1/1.fc25/src/libfabric-1.4.1-1.fc25.src.rpm && \
-rpmbuild --rebuild libfabric-1.4.1-1.fc25.src.rpm && rm ~/rpmbuild/RPMS/x86_64/libfabric-debug* && yum install -y ~/rpmbuild/RPMS/x86_64/libfabric* && \
-rm -rf ~/root/rpmbuild/
-
 RUN yum install -y openmpi-devel metis-devel metis64-devel
 
 ENV PATH=$PATH:/usr/lib64/openmpi/bin/
